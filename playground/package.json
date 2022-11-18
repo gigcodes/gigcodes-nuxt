@@ -1,0 +1,14 @@
+{
+  "private": true,
+  "name": "gigcodes-nuxt-playground",
+  "type": "module",
+  "scripts": {
+    "dev": "nuxi dev",
+    "build": "nuxi build",
+    "generate": "nuxi generate"
+  },
+  "devDependencies": {
+    "nuxt": "rc",
+    "gigcodes-nuxt": "latest"
+  }
+}
