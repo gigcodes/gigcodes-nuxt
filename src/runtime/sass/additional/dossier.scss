@@ -1,0 +1,80 @@
+.dossier-sort-options {
+  position: relative;
+
+  @media all and (min-width: 768px) {
+    display: none;
+  }
+}
+
+.dossier {
+  table td span.status {
+    border-radius: 7px;
+    display: inline-block;
+    height: 7px;
+    width: 7px;
+  }
+
+  table td span.status-live {
+    background: #479967;
+  }
+
+  table {
+    @apply table-auto w-full;
+    thead {
+      @apply text-xs uppercase text-slate-400 bg-slate-50 rounded-sm;
+      tr {
+        th {
+          @apply p-2 whitespace-nowrap font-semibold text-left;
+          & .checkbox-col {
+            @apply w-px;
+          }
+        }
+      }
+    }
+
+    tbody {
+      @apply text-sm divide-y divide-slate-100;
+      tr {
+        td {
+          @apply p-1 px-2 whitespace-nowrap;
+          &.column-actions {
+            text-align: end;
+          }
+        }
+
+        a:hover {
+          color: #3aa3e3;
+          text-decoration: none;
+        }
+      }
+    }
+  }
+
+  ul.dropdown-menu {
+    li {
+      @apply text-gray-700 block px-4 py-1 text-sm hover:bg-gray-100 hover:text-gray-900 rounded;
+      &.warning {
+        @apply bg-rose-500 hover:bg-rose-600 text-white;
+      }
+    }
+  }
+
+  @media all and (min-width: 768px) {
+    .has-status-icon {
+      display: flex;
+      align-items: center;
+
+      .status {
+        flex-shrink: 0;
+        margin-right: 15px;
+      }
+    }
+  }
+
+  .cell-slug {
+    color: #777;
+    font-family: "Menlo", "Monaco", "Consolas", "Liberation Mono",
+    "Courier New", "monospace";
+  }
+}
+

@@ -1,0 +1,5 @@
+export declare class Bus {
+  $on(action: string, fn: any): any;
+  $emit(action: string, params?: any): any;
+  $off(action: string, fn: any): void;
+}

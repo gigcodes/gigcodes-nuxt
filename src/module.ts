@@ -1,38 +1,57 @@
+import { fileURLToPath } from 'node:url'
+
 import {
   defineNuxtModule,
   createResolver,
   addComponentsDir,
-  addPlugin,
-  installModule
+  installModule, addPlugin
 } from '@nuxt/kit'
 
-export interface ModuleOptions {}
+export * from './types'
+
+export interface ModuleOptions {
+  css: any;
+  toasterOptions: any
+}
+
+const runtimeDir = fileURLToPath(
+  new URL('../src/runtime', import.meta.url)
+)
 
 export default defineNuxtModule<ModuleOptions>({
   meta: {
     name: 'gigcodes-nuxt',
     configKey: 'gigcodesNuxt'
   },
-  setup (options, nuxt) {
+  defaults: {
+    css: true,
+    toasterOptions: {
+      hello: 'asd'
+    }
+  },
+  async setup (options, nuxt) {
     const { resolve } = createResolver(import.meta.url)
-    addComponentsDir({ path: resolve('./runtime/components/button') })
-    installModule('@nuxtjs/tailwindcss', {
-      cssPath: resolve('./runtime/assets/css/tailwind.css'),
-      viewer: false,
-      config: {
-        content: [resolve('./runtime/**/*.{vue,js,ts,jsx,tsx}')],
-        theme: {
-          extend: {
-            boxShadow: {
-              DEFAULT:
-                '0 1px 3px 0 rgba(0, 0, 0, 0.08), 0 1px 2px 0 rgba(0, 0, 0, 0.02)',
-              md: '0 4px 6px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -1px rgba(0, 0, 0, 0.02)',
-              lg: '0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.01)',
-              xl: '0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 10px 10px -5px rgba(0, 0, 0, 0.01)'
-            }
-          }
-        }
-      }
+
+    await addComponentsDir({ path: resolve('./runtime/components/button') })
+    await addComponentsDir({ path: resolve('./runtime/components/dossier') })
+
+    nuxt.options.runtimeConfig.app.__TOASTER_OPTIONS__ = options.toasterOptions!
+    addPlugin({ src: resolve('./runtime/plugins') })
+
+    await installModule('@nuxtjs/tailwindcss', {
+      /**
+       * Here, you specify where your config is.
+       * By default, the module have a configPath relative
+       * to the current path, ie the playground !
+       * (or the app using your module)
+       */
+      configPath: resolve(runtimeDir, 'tailwind.config')
     })
+
+    nuxt.options.build.transpile.push(runtimeDir)
+
+    if (options.css) {
+      nuxt.options.css.push(resolve(runtimeDir, 'sass/tailwind.scss'))
+    }
   }
 })

@@ -2,18 +2,7 @@
 import { withDefaults } from 'vue'
 
 import { sizes, classes } from '../../extensions/btn'
-
-type btnTypes =
-  | 'primary'
-  | 'secondary'
-  | 'tertiary'
-  | 'dangerFill'
-  | 'danger'
-  | 'successFill'
-  | 'success'
-  | 'none';
-
-type btnSizes = 'normal' | 'sm' | 'lg' | 'xs' | 'none';
+import { btnSizes, btnTypes } from '../../../types'
 
 interface BtnProps {
   type?: btnTypes;
@@ -32,7 +21,6 @@ withDefaults(defineProps<BtnProps>(), {
 </script>
 
 <template>
-  <button class="btn" />
   <button
     :class="
       disabled || loading
