@@ -243,7 +243,7 @@
 <script>
 </script>
 <script setup lang="ts">
-import { debounce, each, findWhere, indexOf, map } from 'underscore'
+import { debounce, each, findWhere, indexOf } from 'underscore'
 import Cookies from 'js-cookie'
 import { computed, onMounted, PropType, ref, watch } from 'vue'
 import {
