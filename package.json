@@ -1,6 +1,6 @@
 {
   "name": "gigcodes-nuxt",
-  "version": "0.0.1-beta.0",
+  "version": "0.0.1-beta.1",
   "description": "Gigcodes UI Library for Nuxt 3 Framework",
   "license": "MIT",
   "type": "module",
@@ -45,6 +45,7 @@
     "js-cookie": "^3.0.1",
     "pathe": "^1.0.0",
     "sass": "^1.56.1",
+    "slugify": "^1.6.5",
     "underscore": "^1.13.6"
   }
 }

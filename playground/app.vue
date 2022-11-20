@@ -1,20 +1,28 @@
 <template>
   <div>
+    <progress-bar />
     <btn type="primary" @click="log">
       Hello
     </btn>
     <dossier-table collection="sample" :get-api="getApi" />
+    <text-field v-model="content" v-model:slug="slug" name="hello" slugify @blur="log" />
   </div>
 </template>
 
 <script setup>
-
+import { ref } from 'vue'
 import { useNuxtApp } from 'nuxt/app'
 import axios from 'axios'
 
-const log = () => $event.$emit('hello')
+const content = ref('')
+const slug = ref('')
 
-const { $event } = useNuxtApp()
+const log = data => console.log(data)
+
+const {
+  $event,
+  $progress
+} = useNuxtApp()
 
 $event.$on('hello', () => {
   // eslint-disable-next-line no-console

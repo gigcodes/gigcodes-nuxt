@@ -34,6 +34,8 @@ export default defineNuxtModule<ModuleOptions>({
 
     await addComponentsDir({ path: resolve('./runtime/components/button') })
     await addComponentsDir({ path: resolve('./runtime/components/dossier') })
+    await addComponentsDir({ path: resolve('./runtime/components/fieldtypes') })
+    await addComponentsDir({ path: resolve('./runtime/components/others') })
 
     nuxt.options.runtimeConfig.app.__TOASTER_OPTIONS__ = options.toasterOptions!
     addPlugin({ src: resolve('./runtime/plugins') })
