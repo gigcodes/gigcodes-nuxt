@@ -45,6 +45,7 @@
     "js-cookie": "^3.0.1",
     "pathe": "^1.0.0",
     "sass": "^1.56.1",
+    "sass-loader": "^13.2.0",
     "slugify": "^1.6.5",
     "underscore": "^1.13.6"
   }
