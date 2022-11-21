@@ -1,4 +1,4 @@
-@import "tailwindcss/base";
+@import "tailwindcss/base.css";
 $bg: rgba(238, 242, 246, 0.5);
 $screen-xs-max: 767px;
 $color_dark_blue: #2d393c;
@@ -32,8 +32,240 @@ $asset_bg: #394045;
   text-transform: uppercase
 }
 
-@import 'additional/utility-patterns.scss';
-@import 'additional/theme.scss';
-@import 'additional/dossier.scss';
-@import "tailwindcss/components";
-@import "tailwindcss/utilities";
+.h1 {
+  @apply text-4xl font-extrabold tracking-tighter;
+}
+
+.h2 {
+  @apply text-3xl font-extrabold tracking-tighter;
+}
+
+.h3 {
+  @apply text-3xl font-extrabold;
+}
+
+.h4 {
+  @apply text-2xl font-extrabold tracking-tight;
+}
+
+@screen md {
+  .h1 {
+    @apply text-5xl;
+  }
+
+  .h2 {
+    @apply text-4xl;
+  }
+}
+
+// Buttons
+.btn,
+.btn-lg,
+.btn-sm,
+.btn-xs {
+  @apply font-medium text-sm inline-flex items-center justify-center rounded leading-5 shadow-sm transition duration-150 ease-in-out;
+}
+
+.btn {
+  @apply px-3 py-2;
+}
+
+.btn-lg {
+  @apply px-4 py-3;
+}
+
+.btn-sm {
+  @apply px-2 py-1;
+}
+
+.btn-xs {
+  @apply px-2 py-0.5;
+}
+
+// Forms
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration {
+  -webkit-appearance: none;
+}
+
+.form-input,
+.form-textarea,
+.form-multiselect,
+.form-select,
+.form-checkbox,
+.form-radio {
+  @apply text-sm text-gray-800 bg-white border;
+}
+
+.form-input,
+.form-textarea,
+.form-multiselect,
+.form-select,
+.form-checkbox {
+  @apply rounded;
+}
+
+.form-input,
+.form-textarea,
+.form-multiselect,
+.form-select {
+  @apply leading-5 py-2 px-3 border-gray-200 hover:border-gray-300 focus:border-indigo-300 shadow-sm;
+}
+
+.form-input,
+.form-textarea {
+  @apply placeholder-gray-400;
+}
+
+.form-select {
+  @apply pr-10;
+}
+
+.form-checkbox,
+.form-radio {
+  @apply text-indigo-500 border border-gray-300;
+}
+
+/* Chrome, Safari and Opera */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+}
+
+.form-group {
+  padding: 24px;
+  @apply m-0;
+}
+
+:focus,
+button:focus,
+.btn:focus,
+.btn-sm:focus,
+.form-input:focus,
+.form-textarea:focus,
+.form-multiselect:focus,
+.form-select:focus,
+.form-checkbox:focus,
+.form-radio:focus {
+
+}
+
+.form-input,
+.form-textarea,
+.form-multiselect,
+.form-select,
+.form-checkbox,
+.form-radio {
+
+  &:focus {
+    box-shadow: none !important;
+  }
+}
+
+.loading {
+  text-align: center;
+  padding: 20px 0;
+
+  .icon {
+    display: block;
+    margin-bottom: 5px;
+  }
+
+  &.loading-basic {
+    text-align: left;
+    padding: 0;
+
+    .icon {
+      display: inline-block;
+      margin: -2px 5px 0 0;
+    }
+  }
+}
+
+.dossier-sort-options {
+  position: relative;
+
+  @media all and (min-width: 768px) {
+    display: none;
+  }
+}
+
+.dossier {
+  table td span.status {
+    border-radius: 7px;
+    display: inline-block;
+    height: 7px;
+    width: 7px;
+  }
+
+  table td span.status-live {
+    background: #479967;
+  }
+
+  table {
+    @apply table-auto w-full;
+    thead {
+      @apply text-xs uppercase text-slate-400 bg-slate-50 rounded-sm;
+      tr {
+        th {
+          @apply p-2 whitespace-nowrap font-semibold text-left;
+          & .checkbox-col {
+            @apply w-px;
+          }
+        }
+      }
+    }
+
+    tbody {
+      @apply text-sm divide-y divide-slate-100;
+      tr {
+        td {
+          @apply p-1 px-2 whitespace-nowrap;
+          &.column-actions {
+            text-align: end;
+          }
+        }
+
+        a:hover {
+          color: #3aa3e3;
+          text-decoration: none;
+        }
+      }
+    }
+  }
+
+  ul.dropdown-menu {
+    li {
+      @apply text-gray-700 block px-4 py-1 text-sm hover:bg-gray-100 hover:text-gray-900 rounded;
+      &.warning {
+        @apply bg-rose-500 hover:bg-rose-600 text-white;
+      }
+    }
+  }
+
+  @media all and (min-width: 768px) {
+    .has-status-icon {
+      display: flex;
+      align-items: center;
+
+      .status {
+        flex-shrink: 0;
+        margin-right: 15px;
+      }
+    }
+  }
+
+  .cell-slug {
+    color: #777;
+    font-family: "Menlo", "Monaco", "Consolas", "Liberation Mono",
+    "Courier New", "monospace";
+  }
+}
+
+@import "tailwindcss/components.css";
+@import "tailwindcss/utilities.css";
