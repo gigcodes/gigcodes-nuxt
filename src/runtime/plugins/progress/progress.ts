@@ -1,5 +1,6 @@
-import { nextTick, reactive } from 'vue'
+// @ts-nocheck
 
+import { nextTick, reactive } from 'vue'
 const DEFAULT_OPTION = {
   canSuccess: true,
   show: false,
@@ -18,9 +19,11 @@ const DEFAULT_OPTION = {
   autoFinish: true
 }
 
+// @ts-ignore
 function assign (target) {
   let index = 1; let key; let src
   for (; index < arguments.length; ++index) {
+    // eslint-disable-next-line prefer-rest-params
     src = arguments[index]
 
     for (key in src) {

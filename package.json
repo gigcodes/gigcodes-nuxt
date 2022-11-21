@@ -1,6 +1,6 @@
 {
   "name": "gigcodes-nuxt",
-  "version": "0.0.1-beta.1",
+  "version": "0.0.1-beta.3",
   "description": "Gigcodes UI Library for Nuxt 3 Framework",
   "license": "MIT",
   "type": "module",
@@ -19,6 +19,10 @@
   "files": [
     "dist"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gigcodes/gigcodes-nuxt.git"
+  },
   "scripts": {
     "prepack": "nuxt-module-build",
     "dev": "nuxi dev playground",
@@ -40,7 +44,6 @@
     "@headlessui/vue": "^1.7.4",
     "@heroicons/vue": "^2.0.13",
     "@nuxt/kit": "^3.0.0",
-    "@nuxtjs/toast": "^3.3.1",
     "axios": "^1.1.3",
     "js-cookie": "^3.0.1",
     "pathe": "^1.0.0",
